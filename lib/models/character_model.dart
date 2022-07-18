@@ -1,46 +1,65 @@
+// To parse this JSON data, do
+//
+//     final characterModel = characterModelFromJson(jsonString);
+
+import 'dart:convert';
+
 class CharacterModel {
-  final String? imageUrl;
-  final String? name;
-  final String? isAlive;
-  final String? species;
-  final String? gender;
-  final String? description;
-  final String? placeOfBirth;
-  final String? location;
+    CharacterModel({
+        this.id,
+        this.name,
+        this.status,
+        this.species,
+        this.type,
+        this.gender,
+        this.desc,
+        this.race,
+        this.origin,
+        this.image,
+        this.createAt,
+    });
 
-  CharacterModel({
-    this.imageUrl,
-    this.name,
-    this.isAlive,
-    this.species,
-    this.gender,
-    this.description,
-    this.placeOfBirth,
-    this.location,
-  });
+    int? id;
+    String? name;
+    String? status;
+    String? species;
+    String? type;
+    String? gender;
+    String? desc;
+    String? race;
+    int? origin;
+    String? image;
+    DateTime? createAt;
+
+    factory CharacterModel.fromRawJson(String str) => CharacterModel.fromJson(json.decode(str));
+
+    String toRawJson() => json.encode(toJson());
+
+    factory CharacterModel.fromJson(Map<String, dynamic> json) => CharacterModel(
+        id: json["id"] == null ? null : json["id"],
+        name: json["name"] == null ? null : json["name"],
+        status: json["status"] == null ? null : json["status"],
+        species: json["species"] == null ? null : json["species"],
+        type: json["type"] == null ? null : json["type"],
+        gender: json["gender"] == null ? null : json["gender"],
+        desc: json["desc"] == null ? null : json["desc"],
+        race: json["race"] == null ? null : json["race"],
+        origin: json["origin"] == null ? null : json["origin"],
+        image: json["image"] == null ? null : json["image"],
+        createAt: json["create_at"] == null ? null : DateTime.parse(json["create_at"]),
+    );
+
+    Map<String, dynamic> toJson() => {
+        "id": id == null ? null : id,
+        "name": name == null ? null : name,
+        "status": status == null ? null : status,
+        "species": species == null ? null : species,
+        "type": type == null ? null : type,
+        "gender": gender == null ? null : gender,
+        "desc": desc == null ? null : desc,
+        "race": race == null ? null : race,
+        "origin": origin == null ? null : origin,
+        "image": image == null ? null : image,
+        "create_at": createAt == null ? null : createAt!.toIso8601String(),
+    };
 }
-
-// class CharacterModelList {
-//   List<CharacterModel> characterModelList = [
-//     CharacterModel(
-//       'assets/images/rick_.sanchez.png',
-//       'Рик Санчез',
-//       'живой',
-//       'Человек',
-//       'Мужской',
-//       'Главный протагонист мультсериала «Рик и Морти». Безумный ученый, чей алкоголизм, безрассудность и социопатия заставляют беспокоиться семью его дочери.',
-//       'Земля C-137',
-//       'Земля (Измерение подменны)',
-//     ),
-//     CharacterModel(
-//       'assets/images/rick_.sanchez.png',
-//       'Рик Санчез',
-//       'живой',
-//       'Человек',
-//       'Мужской',
-//       'Главный протагонист мультсериала «Рик и Морти». Безумный ученый, чей алкоголизм, безрассудность и социопатия заставляют беспокоиться семью его дочери.',
-//       'Земля C-137',
-//       'Земля (Измерение подменны)',
-//     ),
-//   ];
-// }

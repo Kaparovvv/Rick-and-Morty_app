@@ -8,13 +8,13 @@ class CharactersInitial extends CharactersState {}
 class CharacterLoadingState extends CharactersState {}
 
 class CharacterLoadedState extends CharactersState {
-  final List<CharacterModel> characterModelList;
+  final List<CharacterModel> characterModel;
 
-  CharacterLoadedState({required this.characterModelList});
+  CharacterLoadedState({required this.characterModel});
 }
 
 class CharacterErorState extends CharactersState {
-  final String message;
+  final CatchException message;
 
   CharacterErorState(this.message);
 }
