@@ -75,4 +75,3 @@ class SearchTextFieldWidget extends StatelessWidget {
   }
 }
 
-void navigationFilter(Function navigation) {}
